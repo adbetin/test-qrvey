@@ -1,0 +1,5 @@
+.country-container {
+  &::after {
+    text-decoration: underline;
+  }
+}
