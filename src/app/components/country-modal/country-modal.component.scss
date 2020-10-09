@@ -1,0 +1,28 @@
+.country-modal {
+  &-container {
+    z-index: 1000;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  &-body {
+    background: #fff;
+    margin: 20px;
+    padding: 50px;
+    border-radius: 5px;
+  }
+
+  &-background {
+    z-index: 900;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.5;
+  }
+}

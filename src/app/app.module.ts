@@ -1,15 +1,15 @@
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { CountryListComponent } from './components/country-list/country-list.component';
+import { CountryModalComponent } from './components/country-modal/country-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { CountryListComponent } from './components/country-list/country-list.component';
-import { CountryDialogComponent } from './components/country-dialog/country-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountryListComponent,
-    CountryDialogComponent
+    CountryModalComponent
   ],
   imports: [
     BrowserModule,

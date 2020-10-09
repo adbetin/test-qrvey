@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CountryDialogComponent } from './country-dialog.component';
+import { CountryModalComponent } from './country-modal.component';
 
-describe('CountryDialogComponent', () => {
-  let component: CountryDialogComponent;
-  let fixture: ComponentFixture<CountryDialogComponent>;
+describe('CountryModalComponent', () => {
+  let component: CountryModalComponent;
+  let fixture: ComponentFixture<CountryModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CountryDialogComponent ]
+      declarations: [ CountryModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CountryDialogComponent);
+    fixture = TestBed.createComponent(CountryModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
