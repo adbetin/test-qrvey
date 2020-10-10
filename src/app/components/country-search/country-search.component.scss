@@ -1,0 +1,21 @@
+.country-search-container {
+  background-color: #4a4b4f;
+  padding: 10px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+
+  @media (min-width: 720px) {
+    padding: 40px;
+  }
+
+  .country-search-input {
+    padding: 5px;
+    width: 96%;
+
+    @media (min-width: 720px) {
+      padding: 5px;
+      width: 500px;
+    }
+  }
+}
