@@ -1,6 +1,6 @@
 <div class="region-container">
     <h1>{{region.name}}</h1>
-<div class="country-container" *ngFor='let country of region.countries;'>
-    <div class="country-name">{{country.name}}</div>
-</div>
+    <div class="country-container" *ngFor='let country of region.countries;'>
+        <div class="country-name" (click)="onClicked(country)">{{country.name}}</div>
+    </div>
 </div>

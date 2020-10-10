@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
-
-import { Region } from './../../models/country';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Country, Region } from './../../models/country';
 
 @Component({
   selector: 'app-country-list',
@@ -9,4 +8,9 @@ import { Region } from './../../models/country';
 })
 export class CountryListComponent {
   @Input() region: Region;
+  @Output() countryClicked = new EventEmitter<Country>();
+
+  onClicked(country: Country){
+    this.countryClicked.emit(country);
+  }
 }

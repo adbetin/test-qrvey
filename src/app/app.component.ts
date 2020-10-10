@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
   }
 
   onCountrySearch(value: string = ''){
-    console.log('search value', value);
     this.world$ = this.worldService.getWorld(value).pipe(
       catchError((err) => {
         this.errorObject = 'Error loading data';
