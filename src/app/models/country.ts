@@ -25,7 +25,7 @@ export class Region {
   constructor(private _name: string, private _countries: Array<Country>) {}
 
   public get name() {
-    return this._name || 'No definido';
+    return this._name || 'Undefined';
   }
 
   public get countries() {

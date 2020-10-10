@@ -1,16 +1,16 @@
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Region, World } from './../models/country';
+import { filter, map } from 'rxjs/operators';
 
 import { Country } from '../models/country';
-import { CountryData } from './../models/country-data';
 import { CountryRemoteService } from '../repository/country-remote.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WorldService {
+  private countries: Observable<Country[]>;
   // private _favCountries: Array<CountryView> = [];
 
   constructor(
@@ -18,30 +18,47 @@ export class WorldService {
     private remoteService: CountryRemoteService
   ) {}
 
-  getWorld(): Observable<World> {
-    return this.remoteService.getCountries().pipe(
-      // map all items as Country objects
-      map((data) => data.map((item) => new Country(item as CountryData))),
+  getWorld(query?: string): Observable<World> {
+    return this.createWorld(query);
+  }
 
-      // group elements by region on a plainWorld object
-      map((data) => {
-        const plainWorld: { [region: string]: Array<Country> } = {};
-        const reduced = data.reduce((world, country) => {
-          world[country.region] = [...(world[country.region] || []), country];
+  // TODO: split
+  private createWorld(query?: string): Observable<World> {
+    return this.getCountries()
+      // filter pipe for queries
+      .pipe(
+        map((data) =>
+          data.filter(
+            (item) => !query || item.name.toLowerCase().indexOf(query.toLowerCase()) >= 0
+          )
+        )
+      )
+      .pipe(
+        // group elements by region on a plainWorld object
+        map((data) => {
+          return data.reduce((world, country) => {
+            world[country.region] = [...(world[country.region] || []), country];
+            return world;
+          }, {});
+        }),
+
+        // cast plain world to World object
+        map((plainWorld) => {
+          const world = new World();
+          Object.keys(plainWorld).forEach((key) => {
+            world.regions.push(new Region(key, plainWorld[key]));
+          });
+          // sort world regions by region name
+          world.regions.sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1));
           return world;
-        }, plainWorld);
-        return reduced;
-      }),
+        })
+      );
+  }
 
-      // cast plain world to World object
-      map((plainWorld) => {
-        const world = new World();
-        Object.keys(plainWorld).forEach((key) => {
-          world.regions.push(new Region(key, plainWorld[key]));
-        });
-        console.log('world', world);
-        return world;
-      })
-    );
+  private getCountries(): Observable<Country[]> {
+    if (!this.countries) {
+      this.countries = this.remoteService.getCountries();
+    }
+    return this.countries;
   }
 }

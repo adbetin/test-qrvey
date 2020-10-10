@@ -1,25 +1,24 @@
-<button (click)="initWorld()">Llamar</button>
+<app-country-search (countrySearch)="onCountrySearch($event)"></app-country-search>
 
 <div div *ngIf="world$ | async as world; else loadingOrError">
-    <div *ngFor='let region of world.regions; let i = index;'>
-        <app-country-list [region]="region"></app-country-list>
-    </div>
+  <div *ngFor='let region of world.regions'>
+    <app-country-list [region]="region"></app-country-list>
+  </div>
+  <div *ngIf='world.regions?.length === 0'>No results</div>
 </div>
 
 <ng-template #loadingOrError>
-    <ng-container *ngIf="errorObject; else loading">
-        <div class="col-12 text-center">
-          <div class="alert alert-danger">
-            {{ errorObject }}
-          </div>
-        </div>
-      </ng-container>
+  <ng-container *ngIf="errorObject; else loading">
+    <div>
+      <div>
+        {{ errorObject }}
+      </div>
+    </div>
+  </ng-container>
 </ng-template>
 
 <ng-template #loading>
-    <div class="col-12 text-center">
-      Loading ...
-    </div>
-  </ng-template>
+    Loading ...
+</ng-template>
 
 <!--<app-country-modal></app-country-modal>-->

@@ -1,3 +1,6 @@
+import { map, shareReplay } from 'rxjs/operators';
+
+import { Country } from '../models/country';
 import { CountryData } from './../models/country-data';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,7 +14,12 @@ export class CountryRemoteService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCountries(): Observable<CountryData[]> {
-    return this.httpClient.get<CountryData[]>(environment.countriesUrl);
+  getCountries(): Observable<Country[]> {
+    return this.httpClient.get<CountryData[]>(environment.countriesUrl)
+    .pipe(
+      map((data) => data.map((item) => new Country(item as CountryData))),
+      // avoid multiple calls to a service
+      shareReplay({ bufferSize: 1, refCount: true }),
+    );
   }
 }

@@ -17,13 +17,14 @@ export class AppComponent implements OnInit {
   constructor(private worldService: WorldService) {}
 
   ngOnInit(): void {
-    this.initWorld();
+    this.onCountrySearch();
   }
 
-  initWorld(): void {
-    this.world$ = this.worldService.getWorld().pipe(
+  onCountrySearch(value: string = ''){
+    console.log('search value', value);
+    this.world$ = this.worldService.getWorld(value).pipe(
       catchError((err) => {
-        this.errorObject = 'Error al cargar los datos';
+        this.errorObject = 'Error loading data';
         return throwError(err);
       })
     );
