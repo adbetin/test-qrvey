@@ -1,11 +1,11 @@
 .country-detail-container {
-  min-width: 680px;
+  min-width: 512px;
   .country-detail-header {
     display: flex;
     .country-name {
       display: inline;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 32px;
     }
 
     .country-detail-flag {
@@ -21,12 +21,17 @@
   }
 
   .country-detail-body {
-    margin-top: -90px;
+    margin-top: -80px;
     .country-detail-item {
+      margin: 5px 0px;
       display: block;
       .label {
         font-weight: bold;
       }
     }
+  }
+
+  .bold{
+    font-weight: bold;
   }
 }

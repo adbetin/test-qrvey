@@ -1,6 +1,10 @@
 .country-container {
-  &:hover {
-    cursor: pointer;
+
+  margin: 5px;
+  .country-name{
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .country-image {

@@ -7,6 +7,7 @@
             <span class="country-image"><img [src]="country.flag" alt="flag" /></span>
         </div>
     </div>
+    <!--TODO: fix negative margin-->
     <div class="country-detail-body">
         <div class="country-detail-item">
             <span class="label">Region: </span>
@@ -28,11 +29,9 @@
             <span class="label">Language: </span>
             {{country.language}}
         </div>
-        <div class="country-detail-item">
-            <div class="value">
-                <span class="label">Border Countries: </span>
-                {{countryBorders | countryBorders}}
-            </div>
+        <div class="country-detail-item bold">
+            <span class="label">Border Countries: </span>
+            {{countryBorders | countryBorders}}
         </div>
     </div>
 </div>
