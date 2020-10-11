@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Country } from './../../models/country';
 import { WorldService } from './../../services/world.service';
@@ -8,13 +8,13 @@ import { WorldService } from './../../services/world.service';
   templateUrl: './country-detail.component.html',
   styleUrls: ['./country-detail.component.scss'],
 })
-export class CountryDetailComponent implements OnInit {
+export class CountryDetailComponent implements OnChanges {
   @Input() country: Country;
-  public countryBorders: string[];
+  @Input() countryBorders: string[];
 
   constructor(private worldService: WorldService) {}
 
-  ngOnInit(): void {
+  ngOnChanges(_changes: SimpleChanges) {
     this.countryBorders = this.worldService.getCountryBorders(this.country);
   }
 }
