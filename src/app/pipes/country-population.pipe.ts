@@ -8,7 +8,7 @@ const mainOrder = 1000;
 })
 export class CountryPopulationPipe implements PipeTransform {
   transform(population: number): string {
-    if(population === 0){
+    if (population === 0) {
       return '0 People';
     }
     const relation = Math.log(population) / Math.log(mainOrder);
