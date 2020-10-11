@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Demo
 
-This project is hosted on GitHub Pages. Navigate to `https://adbetin.github.io/test-qrvey/`
+This project is hosted on GitHub Pages. Navigate to `https://adbetin.github.io/test-qrvey/`.
 
 ## Development server
 
