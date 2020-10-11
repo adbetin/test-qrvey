@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "lts/*"
+dist: trusty
+sudo: required
+branches:
+  only:
+  - develop
+before_script:
+  - npm install -g @angular/cli
+script:
+  - ng lint
+  - ng build --prod --base-href=/test-qrvey/
+  - ng deploy --base-href=/test-qrvey/
