@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Country, World } from './models/country';
 import { Observable, throwError } from 'rxjs';
 
-import { World } from './models/country';
+import { CountryModalComponent } from './components/country-modal/country-modal.component';
 import { WorldService } from './services/world.service';
 import { catchError } from 'rxjs/operators';
 
@@ -12,7 +13,10 @@ import { catchError } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   world$: Observable<World>;
+  activeCountry: Country = null;
   errorObject = null;
+
+  @ViewChild('countryModal') countryModal: CountryModalComponent;
 
   constructor(private worldService: WorldService) {}
 
@@ -27,5 +31,10 @@ export class AppComponent implements OnInit {
         return throwError(err);
       })
     );
+  }
+
+  showDetail(country: Country){
+    this.activeCountry = country;
+    this.countryModal.show();
   }
 }

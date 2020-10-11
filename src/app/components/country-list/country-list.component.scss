@@ -1,6 +1,12 @@
 .country-container {
   &:hover {
-    text-decoration: underline;
     cursor: pointer;
+  }
+
+  .country-image {
+    img {
+      height: 12px;
+      width: 18px;
+    }
   }
 }

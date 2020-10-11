@@ -1,6 +1,12 @@
 <div class="region-container">
     <h1>{{region.name}}</h1>
     <div class="country-container" *ngFor='let country of region.countries;'>
-        <div class="country-name" (click)="onClicked(country)">{{country.name}}</div>
+        <!----><div class="country-name" (click)="onClicked(country)">
+            <!--TODO: fix image loading-->
+            <!---->
+            <span class="country-image"><img [src]="country.flag" alt="flag"/></span>
+            {{country.name}}
+        </div>
+        <!--<app-country-detail [country]="country"></app-country-detail>-->
     </div>
 </div>

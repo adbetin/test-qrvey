@@ -1,8 +1,8 @@
-<div *ngIf="!!country">
+<div *ngIf="active">
     <div class="country-modal-container">
         <span class="modal-close" (click)="hide()">&times;</span>
         <div class="country-modal-body">
-            <div>{{country.name}}</div>
+            <ng-content></ng-content>
         </div>
     </div>
     <div class="country-modal-background"></div>

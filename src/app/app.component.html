@@ -1,14 +1,19 @@
 <app-country-search (countrySearch)="onCountrySearch($event)"></app-country-search>
 
-<app-country-modal #countryModal></app-country-modal>
 <div class="main-container">
   <div div *ngIf="world$ | async as world; else loadingOrError">
-    <div *ngFor='let region of world.regions'>
-      <app-country-list [region]="region" (countryClicked)="countryModal.show($event)"></app-country-list>
+    <div *ngFor='let region of world.regions' class="country-region-column">
+      <app-country-list [region]="region" (countryClicked)="showDetail($event)"></app-country-list>
     </div>
     <div *ngIf='world.regions?.length === 0'>No results</div>
   </div>
 </div>
+
+<app-country-modal #countryModal>
+  <div *ngIf="activeCountry">
+    <app-country-detail [country]="activeCountry"></app-country-detail>
+  </div>
+</app-country-modal>
 
 <ng-template #loadingOrError>
   <ng-container *ngIf="errorObject; else loading">

@@ -1,0 +1,32 @@
+.country-detail-container {
+  min-width: 680px;
+  .country-detail-header {
+    display: flex;
+    .country-name {
+      display: inline;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .country-detail-flag {
+      margin-left: auto;
+      margin-right: 0px;
+      .country-image {
+        img {
+          height: 120px;
+          width: 180px;
+        }
+      }
+    }
+  }
+
+  .country-detail-body {
+    margin-top: -90px;
+    .country-detail-item {
+      display: block;
+      .label {
+        font-weight: bold;
+      }
+    }
+  }
+}

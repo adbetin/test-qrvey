@@ -1,11 +1,25 @@
-import { CountryData } from './country-data';
+import { CountryData, Language } from './country-data';
 export class Country {
+  private _code: string;
   private _name: string;
   private _region: string;
+  private _population: number;
+  private _capital: string;
+  private _currency: string;
+  private _language: string;
+  private _borders: string[];
+  private _flag: string;
 
   constructor(data: CountryData, private _selected: boolean = false) {
     this._name = data.name;
-    this._region = data.region;
+    this._region = data.region || 'Undefined';
+    this._borders = data.borders;
+    this._code = data.alpha3Code;
+    this._population = data.population;
+    this._capital = data.capital || 'Undefined';
+    this._currency = data.currencies.length > 0 ? data.currencies[0].name : 'Undefined';
+    this._language = data.languages.length > 0 ? data.languages[0].name : 'Undefined';
+    this._flag = data.flag;
   }
 
   public get name() {
@@ -18,6 +32,34 @@ export class Country {
 
   public get selected() {
     return this._selected;
+  }
+
+  public get borders(){
+    return this._borders;
+  }
+
+  public get code(){
+    return this._code;
+  }
+
+  public get population(){
+    return this._population;
+  }
+
+  public get capital(){
+    return this._capital;
+  }
+
+  public get currency(){
+    return this._currency;
+  }
+
+  public get language(){
+    return this._language;
+  }
+
+  public get flag(){
+    return this._flag;
   }
 }
 

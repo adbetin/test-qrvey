@@ -6,12 +6,13 @@
   width: 100%;
 
   @media (min-width: 720px) {
-    padding: 40px;
+    padding: 20px;
   }
 
   .country-search-input {
     padding: 5px;
     width: 96%;
+    border-radius: 5px;
 
     @media (min-width: 720px) {
       padding: 5px;

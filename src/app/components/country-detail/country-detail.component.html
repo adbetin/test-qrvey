@@ -1,0 +1,38 @@
+<div class="country-detail-container">
+    <div class="country-detail-header">
+        <div class="country-name">
+            {{country.name}}
+        </div>
+        <div class="country-detail-flag">
+            <span class="country-image"><img [src]="country.flag" alt="flag" /></span>
+        </div>
+    </div>
+    <div class="country-detail-body">
+        <div class="country-detail-item">
+            <span class="label">Region: </span>
+            {{country.region}}
+        </div>
+        <div class="country-detail-item">
+            <span class="label">Population: </span>
+            {{country.population | countryPopulation}}
+        </div>
+        <div class="country-detail-item">
+            <span class="label">Capital: </span>
+            {{country.capital}}
+        </div>
+        <div class="country-detail-item">
+            <span class="label">Currency: </span>
+            {{country.currency}}
+        </div>
+        <div class="country-detail-item">
+            <span class="label">Language: </span>
+            {{country.language}}
+        </div>
+        <div class="country-detail-item">
+            <div class="value">
+                <span class="label">Border Countries: </span>
+                {{countryBorders | countryBorders}}
+            </div>
+        </div>
+    </div>
+</div>

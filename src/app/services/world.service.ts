@@ -1,5 +1,5 @@
+import { BehaviorSubject, Observable, OperatorFunction } from 'rxjs';
 import { Country, Region, World } from './../models/country';
-import { Observable, OperatorFunction } from 'rxjs';
 
 import { CountryRemoteService } from '../repository/country-remote.service';
 import { Injectable } from '@angular/core';
@@ -16,19 +16,24 @@ export class WorldService {
     private remoteService: CountryRemoteService
   ) {}
   private countries: Observable<Country[]>;
+  // TODO: remove
+  private flatCountries: Array<Country>;
 
   getWorld(query?: string): Observable<World> {
     return this.getCountries().pipe(
       this.filterCountries(query),
       this.groupCountries(),
       this.createWorld(),
-      this.sortWorld(),
+      this.sortWorld()
     );
   }
 
   private getCountries(): Observable<Country[]> {
     if (!this.countries) {
       this.countries = this.remoteService.getCountries();
+      this.countries.subscribe((response) => {
+        this.flatCountries = response;
+      });
     }
     return this.countries;
   }
@@ -70,5 +75,11 @@ export class WorldService {
       );
       return world;
     });
+  }
+
+  getCountryBorders(country: Country): string[] {
+    return this.flatCountries
+    .filter(item => country.borders.some(border => border === item.code))
+    .map(item => item.name);
   }
 }

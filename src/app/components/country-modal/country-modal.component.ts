@@ -1,6 +1,4 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
-
-import { Country } from './../../models/country';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-country-modal',
@@ -8,7 +6,7 @@ import { Country } from './../../models/country';
   styleUrls: ['./country-modal.component.scss'],
 })
 export class CountryModalComponent {
-  private _country: Country = null;
+  private _active = false;
 
   @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(
     _event: KeyboardEvent
@@ -16,10 +14,10 @@ export class CountryModalComponent {
     this.hide();
   }
 
-  public get country() {
-    return this._country;
+  public get active() {
+    return this._active;
   }
 
-  public show = (country: Country) => (this._country = country);
-  public hide = () => (this._country = null);
+  public show = () => (this._active = true);
+  public hide = () => (this._active = false);
 }
