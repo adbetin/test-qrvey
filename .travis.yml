@@ -12,4 +12,4 @@ before_script:
 script:
   - ng lint
   - ng build --prod --base-href=/test-qrvey/
-  - ng deploy --base-href=/test-qrvey/
+  - ng deploy --no-silent
