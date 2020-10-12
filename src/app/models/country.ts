@@ -10,7 +10,9 @@ export class Country {
   private _borders: string[];
   private _flag: string;
 
-  constructor(data: CountryData, private _selected: boolean = false) {
+  public favoriteId = 0;
+
+  constructor(data: CountryData) {
     this._name = data.name;
     this._region = data.region || 'Undefined';
     this._borders = data.borders;
@@ -28,10 +30,6 @@ export class Country {
 
   public get region() {
     return this._region;
-  }
-
-  public get selected() {
-    return this._selected;
   }
 
   public get borders(){
@@ -60,6 +58,10 @@ export class Country {
 
   public get flag(){
     return this._flag;
+  }
+
+  public get isFavorite(){
+    return this.favoriteId !== 0;
   }
 }
 

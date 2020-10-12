@@ -5,6 +5,9 @@
 export const environment = {
   production: false,
   countriesUrl: 'https://restcountries.eu/rest/v2/all',
+  frontDB: 'qrvey-test-database',
+  storeDB: 'favCountries',
+  versionDB: 1
 };
 
 /*

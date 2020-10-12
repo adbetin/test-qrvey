@@ -6,6 +6,12 @@
       display: inline;
       font-weight: bold;
       font-size: 32px;
+
+      .country-favorite-icon {
+        color: #e0bc1c;
+        font-size: 32px;
+        cursor: pointer;
+      }
     }
 
     .country-detail-flag {
@@ -31,7 +37,7 @@
     }
   }
 
-  .bold{
+  .bold {
     font-weight: bold;
   }
 }

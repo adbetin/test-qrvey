@@ -17,4 +17,12 @@ export class CountryDetailComponent implements OnChanges {
   ngOnChanges(_changes: SimpleChanges) {
     this.countryBorders = this.worldService.getCountryBorders(this.country);
   }
+
+  addFavorite(country: Country){
+    this.worldService.addFavorite(country);
+  }
+
+  removeFavorite(country: Country){
+    this.worldService.removeFavorite(country);
+  }
 }

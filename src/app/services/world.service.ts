@@ -1,27 +1,34 @@
 import { BehaviorSubject, Observable, OperatorFunction } from 'rxjs';
 import { Country, Region, World } from './../models/country';
+import { flatMap, map, mergeAll } from 'rxjs/operators';
 
+import { CountryDataService } from './../repository/country-data.service';
 import { CountryRemoteService } from '../repository/country-remote.service';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WorldService {
-  // private _favCountries: Array<CountryView> = [];
-
   constructor(
-    // private dataService: CountryDataService,
+    private dataService: CountryDataService,
     private remoteService: CountryRemoteService
   ) {}
+
   private countries: Observable<Country[]>;
+  private favCountries: Array<any>;
   // TODO: remove
   private flatCountries: Array<Country>;
 
   getWorld(query?: string): Observable<World> {
-    return this.getCountries().pipe(
+    return this.dataService.getAllFavCountries().pipe(
+      map((data) => {
+        this.favCountries = data;
+        return this.getCountries();
+      }),
+      mergeAll(),
       this.filterCountries(query),
+      this.setFavorites(),
       this.groupCountries(),
       this.createWorld(),
       this.sortWorld()
@@ -47,6 +54,18 @@ export class WorldService {
           !query || item.name.toLowerCase().indexOf(query.toLowerCase()) >= 0
       )
     );
+  }
+
+  private setFavorites(): OperatorFunction<Country[], Country[]> {
+    return map((data) => {
+      return data.reduce((list, country) => {
+        const favorite = this.favCountries.find(
+          (item: any) => item.code === country.code
+        );
+        country.favoriteId = !!favorite ? favorite.id : 0;
+        return [...list, country];
+      }, []);
+    });
   }
 
   private groupCountries(): OperatorFunction<Country[], {}> {
@@ -79,7 +98,19 @@ export class WorldService {
 
   getCountryBorders(country: Country): string[] {
     return this.flatCountries
-    .filter(item => country.borders.some(border => border === item.code))
-    .map(item => item.name);
+      .filter((item) => country.borders.some((border) => border === item.code))
+      .map((item) => item.name);
+  }
+
+  addFavorite(country: Country) {
+    this.dataService.addFavCountry(country).subscribe((response) => {
+      country.favoriteId = response;
+    });
+  }
+
+  removeFavorite(country: Country) {
+    this.dataService.removeFavCountry(country.favoriteId).subscribe((response) => {
+      country.favoriteId = 0;
+    });
   }
 }

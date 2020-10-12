@@ -10,7 +10,9 @@ import { CountryPopulationPipe } from './pipes/country-population.pipe';
 import { CountrySearchComponent } from './components/country-search/country-search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { NgxIndexedDBModule } from 'ngx-indexed-db';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { dbConfig } from './app.database';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -28,7 +30,8 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgxIndexedDBModule.forRoot(dbConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

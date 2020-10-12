@@ -2,6 +2,8 @@
     <div class="country-detail-header">
         <div class="country-name">
             {{country.name}}
+            <span *ngIf="country.isFavorite" class="country-favorite-icon" (click)="removeFavorite(country)">&#9733;</span>
+            <span *ngIf="!country.isFavorite" class="country-favorite-icon" (click)="addFavorite(country)">&#9734;</span>
         </div>
         <div class="country-detail-flag">
             <span class="country-image"><img [src]="country.flag" alt="flag" /></span>
