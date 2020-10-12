@@ -3,7 +3,7 @@
     <div class="country-container" *ngFor='let country of region.countries;'>
         <div class="country-name" (click)="onClicked(country)">
             <span class="country-image"><img [src]="country.flag" alt="flag" /></span>
-            {{country.name}}<span *ngIf="country.isFavorite" class="country-favorite">&#9733;</span>
+            {{country.name}} <fa-icon *ngIf="country.isFavorite" class="country-favorite" [icon]="fullStar"></fa-icon>
         </div>
     </div>
 </div>

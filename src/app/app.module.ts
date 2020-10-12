@@ -14,6 +14,7 @@ import { NgxIndexedDBModule } from 'ngx-indexed-db';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { dbConfig } from './app.database';
 import { environment } from '../environments/environment';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { environment } from '../environments/environment';
     FormsModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgxIndexedDBModule.forRoot(dbConfig)
+    NgxIndexedDBModule.forRoot(dbConfig),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

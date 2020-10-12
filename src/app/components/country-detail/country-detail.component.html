@@ -2,8 +2,8 @@
     <div class="country-detail-header">
         <div class="country-name">
             {{country.name}}
-            <span *ngIf="country.isFavorite" class="country-favorite-icon" (click)="removeFavorite(country)">&#9733;</span>
-            <span *ngIf="!country.isFavorite" class="country-favorite-icon" (click)="addFavorite(country)">&#9734;</span>
+            <fa-icon *ngIf="country.isFavorite" class="country-favorite-icon" (click)="removeFavorite(country)" [icon]="fullStar"></fa-icon>
+            <fa-icon *ngIf="!country.isFavorite" class="country-favorite-icon" (click)="addFavorite(country)" [icon]="emptyStar"></fa-icon>
         </div>
     </div>
     <div class="country-detail-flag">
