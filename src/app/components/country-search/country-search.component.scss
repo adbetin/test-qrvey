@@ -1,18 +1,36 @@
 .country-search-container {
   background-color: #4a4b4f;
-  padding: 10px;
+  padding: 10px 5px;
   position: fixed;
   top: 0px;
   width: 100%;
 
   @media (min-width: 720px) {
-    padding: 20px;
+    padding: 16px;
   }
 
-  .country-search-input {
-    padding: 5px;
-    width: 96%;
-    border-radius: 5px;
+  .search-input-container {
+    width: 100%;
+    display: flex;
+    
+    .country-search-input {
+      padding: 5px;
+      width: 90%;
+      border-radius: 5px 0px 0px 5px;
+      font-size: 16px;
+      border: 1px solid grey;
+    }
+
+    .country-search-icon {
+      border-radius: 0px 5px 5px 0px;
+      float: right;
+      padding: 5px;
+      background: #ffffff;
+      color: grey;
+      font-size: 16px;
+      border: 1px solid grey;
+      border-left: none;
+    }
 
     @media (min-width: 720px) {
       padding: 5px;

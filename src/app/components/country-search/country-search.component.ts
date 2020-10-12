@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { FormControl } from '@angular/forms';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-country-search',
@@ -9,6 +10,7 @@ import { FormControl } from '@angular/forms';
 })
 export class CountrySearchComponent implements OnInit {
   searchField: FormControl;
+  searchIcon = faSearch;
 
   @Output() countrySearch = new EventEmitter<string>();
 
