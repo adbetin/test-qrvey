@@ -3,6 +3,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * emits a event when search field changes its value
+ */
 @Component({
   selector: 'app-country-search',
   templateUrl: './country-search.component.html',

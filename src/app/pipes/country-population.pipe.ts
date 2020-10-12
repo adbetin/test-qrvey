@@ -3,6 +3,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 const SIZES = ['People', 'K', 'M', 'B'];
 const mainOrder = 1000;
 
+/**
+ * format population based on number's size
+ */
 @Pipe({
   name: 'countryPopulation',
 })

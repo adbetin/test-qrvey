@@ -4,6 +4,9 @@ import { Country } from './../../models/country';
 import { Region } from './../../models/region';
 import { faStar as fullStar } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * displays a region with its country list
+ */
 @Component({
   selector: 'app-country-list',
   templateUrl: './country-list.component.html',

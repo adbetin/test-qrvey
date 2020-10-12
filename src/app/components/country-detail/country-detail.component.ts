@@ -5,6 +5,9 @@ import { WorldService } from './../../services/world.service';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fullStar } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * component used for show a single country's detail
+ */
 @Component({
   selector: 'app-country-detail',
   templateUrl: './country-detail.component.html',
@@ -23,10 +26,18 @@ export class CountryDetailComponent implements OnChanges {
     this.countryBorders = this.worldService.getCountryBorders(this.country);
   }
 
+  /**
+   * @description add a country to favorite list
+   * @param country country to agregate
+   */
   addFavorite(country: Country) {
     this.worldService.addFavorite(country);
   }
 
+  /**
+   * @description remove a country to favorite list
+   * @param country country to remove
+   */
   removeFavorite(country: Country) {
     this.worldService.removeFavorite(country);
   }

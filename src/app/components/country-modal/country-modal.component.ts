@@ -1,5 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 
+/**
+ * generic modal
+ */
 @Component({
   selector: 'app-country-modal',
   templateUrl: './country-modal.component.html',
