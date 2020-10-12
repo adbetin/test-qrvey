@@ -1,10 +1,12 @@
-import { BehaviorSubject, Observable, OperatorFunction } from 'rxjs';
-import { Country, Region, World } from './../models/country';
-import { flatMap, map, mergeAll } from 'rxjs/operators';
+import { Observable, OperatorFunction } from 'rxjs';
+import { map, mergeAll } from 'rxjs/operators';
 
+import { Country } from './../models/country';
 import { CountryDataService } from './../repository/country-data.service';
 import { CountryRemoteService } from '../repository/country-remote.service';
 import { Injectable } from '@angular/core';
+import { Region } from './../models/region';
+import { World } from './../models/world';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,6 @@ export class WorldService {
 
   private countries: Observable<Country[]>;
   private favCountries: Array<any>;
-  // TODO: remove
   private flatCountries: Array<Country>;
 
   getWorld(query?: string): Observable<World> {
@@ -89,7 +90,7 @@ export class WorldService {
 
   private sortWorld(): OperatorFunction<World, World> {
     return map((world) => {
-      world.regions.sort((a, b) =>
+      world.regions.sort((a: Region, b: Region) =>
         a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
       );
       return world;

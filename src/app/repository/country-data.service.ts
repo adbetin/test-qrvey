@@ -2,6 +2,7 @@ import { Country } from './../models/country';
 import { Injectable } from '@angular/core';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Observable } from 'rxjs';
+import { StorageData } from './../models/interfaces/storage-data';
 import { environment } from './../../environments/environment';
 import { map } from 'rxjs/operators';
 
@@ -11,10 +12,9 @@ const STORE = environment.storeDB;
   providedIn: 'root',
 })
 export class CountryDataService {
-  // TODO: type storage
-  constructor(private dbService: NgxIndexedDBService) {}
+  constructor(private dbService: NgxIndexedDBService<StorageData>) {}
 
-  getAllFavCountries(): Observable<any> {
+  getAllFavCountries(): Observable<StorageData[]> {
     return this.dbService.getAll(STORE);
   }
 

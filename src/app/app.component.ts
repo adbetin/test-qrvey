@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Country, World } from './models/country';
 import { Observable, throwError } from 'rxjs';
 
+import { Country } from './models/country';
 import { CountryModalComponent } from './components/country-modal/country-modal.component';
+import { World } from './models/world';
 import { WorldService } from './services/world.service';
 import { catchError } from 'rxjs/operators';
 
