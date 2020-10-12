@@ -11,6 +11,7 @@ const STORE = environment.storeDB;
   providedIn: 'root',
 })
 export class CountryDataService {
+  // TODO: type storage
   constructor(private dbService: NgxIndexedDBService) {}
 
   getAllFavCountries(): Observable<any> {

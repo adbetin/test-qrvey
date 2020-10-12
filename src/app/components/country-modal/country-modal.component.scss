@@ -2,11 +2,20 @@
   &-container {
     z-index: 1000;
     position: fixed;
-    top: 50px;
+    top: 0;
+    right: 0;
     bottom: 0;
-    left: 50%;
-    padding: 20px;
-    transform: translate(-50%, 0);
+    left: 0;
+    padding: 5px;
+
+    @media (min-width: 720px) {
+      top: 50px;
+      right: auto;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      padding: 20px;
+    }
 
     .modal-close {
       color: #aaa;
@@ -27,8 +36,11 @@
   &-body {
     background: #fff;
     margin: 0px;
-    padding: 50px;
+    padding: 16px;
     border-radius: 5px;
+    @media (min-width: 720px) {
+      padding: 50px;
+    }
   }
 
   &-background {
